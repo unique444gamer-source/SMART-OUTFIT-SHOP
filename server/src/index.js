@@ -68,6 +68,50 @@ const Order = mongoose.model('Order', orderSchema);
 const User = mongoose.model('User', userSchema);
 
 // ===============================
+// AUTO CREATE ADMIN ACCOUNT
+// ===============================
+
+const createAdminAccount = async () => {
+  try {
+    const email = process.env.ADMIN_EMAIL?.trim().toLowerCase();
+    const password = process.env.ADMIN_PASSWORD;
+
+    if (!email || !password) {
+      console.warn('ADMIN_EMAIL or ADMIN_PASSWORD is missing!');
+      return;
+    }
+
+    if (password.length < 6) {
+      console.error('Admin password must be at least 6 characters.');
+      return;
+    }
+
+    let admin = await User.findOne({ email });
+
+    const hashedPassword = await bcrypt.hash(password, 12);
+
+    if (!admin) {
+      admin = await User.create({
+        name: 'Administrator',
+        email,
+        password: hashedPassword,
+        role: 'admin'
+      });
+
+      console.log('Admin account created successfully!');
+    } else {
+      admin.role = 'admin';
+      admin.password = hashedPassword;
+      await admin.save();
+
+      console.log('Admin account updated successfully!');
+    }
+  } catch (error) {
+    console.error('Admin creation failed:', error.message);
+  }
+};
+
+// ===============================
 // AUTHENTICATION MIDDLEWARE
 // ===============================
 
