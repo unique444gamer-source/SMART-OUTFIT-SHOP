@@ -407,10 +407,9 @@ app.get('/api/admin/customers', auth(['admin']), async (req, res) => {
 });
 
 // ===============================
-// SERVE FRONTEND (IMPORTANT FIX)
+// SERVE FRONTEND
 // ===============================
 
-// Serve React/Vite static files
 app.use(express.static(clientDist));
 
 // React Router fallback
@@ -431,7 +430,6 @@ app.use((req, res, next) => {
 // DATABASE CONNECTION & SERVER
 // ===============================
 
-
 const port = process.env.PORT || 5000;
 
 mongoose.connect(
@@ -446,18 +444,6 @@ mongoose.connect(
   .catch(error => {
     console.error('MongoDB connection failed:', error.message);
   });
-
-app.listen(port, () => {
-  console.log(`SMART OUTFIT API listening on ${port}`);
-});
-
-
-mongoose.connect(
-  process.env.MONGODB_URI ||
-  'mongodb://127.0.0.1:27017/smart-outfit'
-)
-  .then(() => console.log('MongoDB connected'))
-  .catch(e => console.error('MongoDB connection failed:', e.message));
 
 app.listen(port, () => {
   console.log(`SMART OUTFIT API listening on ${port}`);
