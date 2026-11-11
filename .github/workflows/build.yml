@@ -1,0 +1,21 @@
+name: SMART OUTFIT build check
+
+on:
+  pull_request:
+  push:
+    branches: [main, admin-reference-deploy]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install client dependencies
+        run: npm install --prefix client
+      - name: Build client
+        run: npm run build --prefix client
+      - name: Check API syntax
+        run: node --check server/src/index.js
