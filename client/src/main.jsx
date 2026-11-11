@@ -1,11 +1,11 @@
 import React,{useEffect,useMemo,useState} from 'react';import{createRoot}from'react-dom/client';import{Search,User,Heart,ShoppingBag,Menu,X,ArrowRight,ChevronDown,Star,Plus,Minus,Trash2,LayoutDashboard,Package,Users,ShoppingCart,Ticket,ChartNoAxesCombined,Settings,Truck,MessageCircle,Bell,LogOut,SlidersHorizontal,Check,Mail,MapPin,Phone,Instagram,Facebook,Twitter,Eye,Edit,MoreHorizontal}from'lucide-react';import'./style.css';
 const img=(id,w=700)=>`https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=85`;
 const initialProducts=[
-{id:1,name:'Essential Black Hoodie',category:'Hoodies',price:1599,old:1999,tag:'BEST SELLER',rating:4.9,image:img('photo-1556821840-3a63f95609a7'),desc:'Premium heavyweight cotton hoodie with a relaxed fit. Made for everyday comfort.'},
-{id:2,name:'Classic White T-Shirt',category:'T-Shirts',price:699,old:899,tag:'NEW',rating:4.8,image:img('photo-1521572163474-6864f9cf17ab'),desc:'A timeless everyday essential crafted from soft breathable cotton.'},
-{id:3,name:'Urban Cargo Pants',category:'Pants',price:1899,old:2299,tag:'TRENDING',rating:4.7,image:img('photo-1517438476312-10d79c077509'),desc:'Utility-inspired cargo pants with a modern tapered silhouette.'},
+{id:1,name:'Smart Outfit Hoodie',category:'Hoodies',price:1599,old:1999,tag:'-20%',rating:4.8,image:img('photo-1556821840-3a63f95609a7'),desc:'Premium heavyweight cotton hoodie with a relaxed fit. Made for everyday comfort.'},
+{id:2,name:'Smart Outfit T-Shirt',category:'T-Shirts',price:849,old:999,tag:'-15%',rating:4.7,image:img('photo-1521572163474-6864f9cf17ab'),desc:'A timeless everyday essential crafted from soft breathable cotton.'},
+{id:3,name:'Cargo Pants',category:'Pants',price:1649,old:1999,tag:'-18%',rating:4.8,image:img('photo-1517438476312-10d79c077509'),desc:'Utility-inspired cargo pants with a modern tapered silhouette.'},
 {id:4,name:'Streetwear Oversized Tee',category:'T-Shirts',price:899,old:1199,tag:'',rating:4.8,image:img('photo-1503342217505-b0a15ec3261c'),desc:'Relaxed oversized fit, premium cotton and a clean streetwear look.'},
-{id:5,name:'Minimal White Sneakers',category:'Footwear',price:2499,old:2999,tag:'POPULAR',rating:4.9,image:img('photo-1542291026-7eec264c27ff'),desc:'Clean low-top sneakers designed for versatile everyday styling.'},
+{id:5,name:'Sneakers Shoes',category:'Footwear',price:2999,old:3999,tag:'-25%',rating:4.9,image:img('photo-1542291026-7eec264c27ff'),desc:'Clean low-top sneakers designed for versatile everyday styling.'},
 {id:6,name:'Everyday Denim Jacket',category:'Jackets',price:2799,old:3299,tag:'',rating:4.6,image:img('photo-1516257984-b1b4d707412e'),desc:'A versatile denim layer with a classic cut and durable finish.'},
 {id:7,name:'Premium Black Joggers',category:'Pants',price:1399,old:1699,tag:'SALE',rating:4.7,image:img('photo-1552902865-b72c031ac5ea'),desc:'Soft stretch fabric and a tapered fit for comfort on the move.'},
 {id:8,name:'Modern Crossbody Bag',category:'Accessories',price:1199,old:1499,tag:'NEW',rating:4.8,image:img('photo-1553062407-98eeb64c6a62'),desc:'A compact everyday carry with smart storage and minimal styling.'}
